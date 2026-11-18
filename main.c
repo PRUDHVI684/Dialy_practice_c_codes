@@ -1,64 +1,53 @@
 #include<stdio.h>
 #include<string.h>
-int vowel(char *s,int l);
+#include<ctype.h>
+void covert(char str[],char str1[]);
 int main(){
-     char str[50];
-     fgets(str,sizeof(str),stdin);
-     char *p=str;
-     while(*p){
-         if(*p=='\n'){
-             *p='\0';
-             break;
-         }
-         p++;
-     }
-     char *s=str;
-     int len=strlen(str);
-     int found=0;
-     for(s=strtok(str," ");s!=NULL;s=strtok(NULL," ")){
-         //printf("%s",s);
-         int l=strlen(s);
-         //printf("%d\n",l);
-         if(vowel(s,l)){
-             found=1;
-             printf("%s",s);
-             
-         }
-         
-         
-         //printf("%d",count);
-         
-         
-     }
-     if(!found){
-         printf("not found");
-     }
-     /*for(int i=0;i<len;i++){
-         if(str[i]=='\0'){
-             str[i]=' ';
-         }
-     }*/
-     
-}
-
-int  vowel(char *s,int l){
-    int len=strlen(s);
-    char *first,*last;
-    first=s;
-    last=first+len-1;
-    int found=0;
-    if((*first=='a' ||*first== 'e' ||*first== 'i' ||*first== 'o' ||*first== 'u') && 
-    (*last=='a' || *last=='e' ||*last== 'i' ||*last== 'o' ||*last== 'u'))
-    {
-        //found=1;
-        return 1;
-      
-    }
-    else{
-       return 0; 
+    
+    char str[50];
+    fgets(str,sizeof(str),stdin);
+    char *p=str;
+    while(*p){
+        if(*p=='\n'){
+            *p='\0';
+            break;
+        }
+        p++;
     }
     
+    char str1[10];
+    fgets(str1,sizeof(str1),stdin);
+    char *q=str1;
+    while(*q){
+        if(*q=='\n'){
+            *q='\0';
+            break;
+        }
+        q++;
     
 }
+covert(str,str1);
 
+}
 
+void covert(char str[],char str1[]){
+    
+    char *p=str;
+    while((p=strstr(str,str1))!=NULL){
+        int len=strlen(str1);
+        char *st,*ed;
+        //st=p;
+        //ed=p+len;
+        while(len>0){
+            if(isupper(str[*p])){
+                tolower(str[*p]);
+            }
+            else if(islower(str[*p])){
+                toupper(str[*p]);
+            }
+            len--;
+        }
+        p++;
+    }
+    printf("%s",str);
+}

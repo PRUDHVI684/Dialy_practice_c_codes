@@ -1,53 +1,87 @@
 #include<stdio.h>
-#include<string.h>
-#include<ctype.h>
-void covert(char str[],char str1[]);
+#define row 2
+#define col 3
+int i,j,k;
+int input(int (*)[col]);//,int row,int col;
+int print(int (*)[col]);//,int row,int col);
+int sort(int (*)[col]);//,int row,int col);
 int main(){
     
-    char str[50];
-    fgets(str,sizeof(str),stdin);
-    char *p=str;
-    while(*p){
-        if(*p=='\n'){
-            *p='\0';
-            break;
-        }
-        p++;
-    }
+    int a[row][col];
+    input(a);
+    print(a);//,row,col);
+    sort(a);//,row,col);
+    print(a);
     
-    char str1[10];
-    fgets(str1,sizeof(str1),stdin);
-    char *q=str1;
-    while(*q){
-        if(*q=='\n'){
-            *q='\0';
-            break;
-        }
-        q++;
     
-}
-covert(str,str1);
-
 }
 
-void covert(char str[],char str1[]){
+int input(int (*a)[col]){
     
-    char *p=str;
-    while((p=strstr(str,str1))!=NULL){
-        int len=strlen(str1);
-        char *st,*ed;
-        //st=p;
-        //ed=p+len;
-        while(len>0){
-            if(isupper(str[*p])){
-                tolower(str[*p]);
-            }
-            else if(islower(str[*p])){
-                toupper(str[*p]);
-            }
-            len--;
+    for(i=0;i<row;i++){
+        for(j=0;j<col;j++){
+            printf("enter");
+            scanf("%d",&a[i][j]);
         }
-        p++;
     }
-    printf("%s",str);
 }
+
+int print(int (*a)[col]){
+    for(i=0;i<row;i++){
+        for(j=0;j<col;j++){
+            printf("%d ",a[i][j]);
+        }
+        printf("\n");
+    }
+    
+}
+
+int sort(int (*a)[col]){
+    int t;
+     for(i=0;i<row;i++){
+         for(k=0;k<col-1;k++){
+        for(j=0;j<col-1;j++){
+            
+            if(a[i][j]>a[i][j+1]){
+                t=a[i][j];
+                a[i][j]=a[i][j+1];
+                a[i][j+1]=t;
+            }
+            //printf("rgeg ");
+        }
+    
+        
+     }
+     }
+     printf("\n");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
